@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 import psutil
 import platform
+import os
 from datetime import datetime
 
 app = Flask(__name__)
@@ -38,4 +39,5 @@ def metrics():
     })
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080, debug=False)
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port)
